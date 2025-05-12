@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gilman & Layla</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="content-center">
+    <!-- Halaman Opening -->
+    <section class="page" id="opening">
+      <p>THE WEDDING OF</p>
+      <h1>Gilman & Layla</h1>
+      <p>Kepada Yth.</p>
+      <p>Bapak/Ibu/Saudara/i</p>
+      <a href="undangan-final.html" class="open-button">Buka Undangan</a>
+      <p>ditempat</p>
+    </section>
+    </div>
+    </section>
+
+<script>
+  const navButtons = document.querySelectorAll("nav button");
+  const pages = document.querySelectorAll(".page");
+  let currentIndex = 0;
+
+  function showPage(index) {
+    if (index === currentIndex) return;
+
+    const current = pages[currentIndex];
+    const next = pages[index];
+
+    // Reset nav button style
+    navButtons.forEach(b => b.classList.remove("active"));
+    navButtons[index].classList.add("active");
+
+    // Animasi keluar
+    current.classList.remove("active");
+    setTimeout(() => {
+      current.style.display = "none";
+
+      // Tampilkan halaman berikutnya
+      next.style.display = "block";
+      setTimeout(() => next.classList.add("active"), 10);
+
+      currentIndex = index;
+    }, 400); // tunggu animasi selesai
+  }
+
+  navButtons.forEach((btn, index) => {
+    btn.addEventListener("click", () => showPage(index));
+  });
+
+  // Inisialisasi halaman pertama
+  window.addEventListener("DOMContentLoaded", () => {
+    pages[0].style.display = "block";
+    setTimeout(() => pages[0].classList.add("active"), 10);
+    navButtons[0].classList.add("active");
+  });
+</script>
+
+
+</body>
+</html>
